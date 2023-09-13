@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "0ad53034-f1f7-4d2a-a14d-c6af5c8bbede",
+		"name": "BoostChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18425485"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "/api/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Filipe7\",\r\n    \"email\": \"thetest@test.com\",\r\n    \"password\": \"12345\",\r\n    \"confirmPassword\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"thetest10@test.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRmlsaXBlNyIsImlkIjoiNjRmZjk1YTlhZjA5NDEyZDkwOTdhMzM5IiwiaWF0IjoxNjk0NTcwMzgwfQ.MOpZlGaWWusVvePj8hKd9HdEUbmXwbfiYKQRS1jFEhs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/checkuser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"checkuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/checkuser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"checkuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/upload-avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "upload-avatar",
+									"type": "file",
+									"src": "/E:/Filipe/Downloads/Leonardo_Diffusion_summer_mood_lofi_cyberpunk_yorkshire_terrie_0.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/edit/64ff95a9af09412d9097a339",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"edit",
+								"64ff95a9af09412d9097a339"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"thetest10@test.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Filipe7\",\r\n    \"email\": \"thetest@test.com\",\r\n    \"password\": \"12345\",\r\n    \"confirmPassword\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "/users/edit/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Filipe7",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "thetest9@test.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/edit/64ff95a9af09412d9097a339",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"edit",
+								"64ff95a9af09412d9097a339"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRmlsaXBlNyIsImlkIjoiNjRmZjk1YTlhZjA5NDEyZDkwOTdhMzM5IiwiaWF0IjoxNjk0NTcxMDg4fQ.rcqq3GMMRtfC51WTgDa0pdpCgZfdhFvzofsR90oORws",
+			"type": "string"
+		}
+	]
+}

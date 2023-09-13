@@ -4,15 +4,16 @@ const jwt = require("jsonwebtoken");
 // Import the User model
 const User = require("../models/User");
 
+const jwtSecret = process.env.JWT_SECRET;
 // Function to get a user by their token
 const getUserByToken = async (token) => {
-  // Checl if a valid token is provided
+  // Check if a valid token is provided
   if (!token) {
     return res.status(401).json({ message: "Access Denied!" });
   }
 
   // If valid token is provided, decode the token using jwt.verify and the secret key to verify the token's authenticity.
-  const decoded = jwt.verify(token, "boostsecret");
+  const decoded = jwt.verify(token, `${jwtSecret}`);
 
   // Extract the userId from the decoded token's id property
   const userId = decoded.id;

@@ -8,6 +8,7 @@ const createUserToken = require("../helpers/create-user-token");
 const getToken = require("../helpers/get-token");
 const getUserByToken = require("../helpers/get-user-by-token");
 
+const jwtSecret = process.env.JWT_SECRET;
 module.exports = class UserController {
   // Defining a static method called register, responsible for registering a new user with the provided information.
   static async register(req, res) {
@@ -107,6 +108,13 @@ module.exports = class UserController {
     await createUserToken(user, req, res);
   }
 
+  static async logout(req, res) {
+    if (req.headers && req.headers.authorization) {
+      console.log(req.headers.authorization);
+      res.status(200).json({ message: "Logged out!" });
+    }
+  }
+
   // Check if there is a user in the request and send the user data in the response
   static async checkUser(req, res) {
     let currentUser;
@@ -115,7 +123,7 @@ module.exports = class UserController {
     if (req.headers.authorization) {
       const token = getToken(req);
       // Decode the token
-      const decoded = jwt.verify(token, "boostsecret");
+      const decoded = jwt.verify(token, `${jwtSecret}`);
 
       // Use the decoded user ID to find the user in the database
       currentUser = await User.findById(decoded.id);
@@ -168,18 +176,17 @@ module.exports = class UserController {
     }
 
     // Perform validations, returning error responses if those fail.
-    if (!name) {
-      res.status(422).json({ message: "A valid name is required." });
-      return;
-    }
+    // if (!name) {
+    //   res.status(422).json({ message: "A valid name is required." });
+    // }
 
     // Assign the value of the name variable to the name property of the user object. If validation passes, the name property will be updated with the new value provided in the request.
-    user.name = name;
+    // user.name = name;
 
-    if (!email) {
-      res.status(422).json({ message: "A valid email is required." });
-      return;
-    }
+    // if (!email) {
+    //   res.status(422).json({ message: "A valid email is required." });
+    //   return;
+    // }
 
     // Check if email already exists in db
     const userExists = await User.findOne({ email: email });

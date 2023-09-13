@@ -20,7 +20,7 @@ app.use(express.static("public"));
 const UserRoutes = require("./routes/UserRoutes");
 
 // Register the UserRoutes middleware for the /users route. Any request with a path starting with /users will be handled by the UserRoutes module.
-app.use("/users", UserRoutes);
+app.use("/api", UserRoutes);
 
 // Start the Express server and makes it listen on port 5000, enabling it to receive and handle incoming HTTP requests.
 app.listen(5000);

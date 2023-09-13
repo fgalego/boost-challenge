@@ -34,14 +34,14 @@ Setup the .env file
 ```bash
   DB_USER= (database username)
   DB_PASSWORD= (database password)
-  SECRET= (secret key)
+  JWT_SECRET= (secret key)
 
 ```
 
 Verify the mongoose connection link in conn.js (db folder)
 
 ```bash
-  `mongodb+srv://${dbUser}:${dbPassword}@cluster0.wosiixx.mongodb.net/?retryWrites=true&w=majority`
+  `mongodb+srv://${dbUser}:${dbPassword}@${dbLink}`
 ```
 
 Install NPM

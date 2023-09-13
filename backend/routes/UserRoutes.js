@@ -14,12 +14,23 @@ const { imageUpload } = require("../helpers/image-upload");
 router.post("/register", UserController.register);
 // POST route for user login, handled by UserController.login.
 router.post("/login", UserController.login);
+// POST route for user logout, handled by UserController.logout.
+router.post("/logout", UserController.logout);
+// PUT route for checking if a user exists, handled by UserController.checkUser.
+router.put("/checkuser", UserController.checkUser);
 // GET route for checking if a user exists, handled by UserController.checkUser.
 router.get("/checkuser", UserController.checkUser);
 // GET route for getting a user by their ID, handled by UserController.getUserById.
 router.get("/:id", UserController.getUserById);
 // PATCH route for editing a user, which requires authentication and provides image upload, handled by UserController.editUser.
 router.patch(
+  "/edit/:id",
+  verifyToken,
+  imageUpload.single("image"),
+  UserController.editUser
+);
+// POST route for editing a user, which requires authentication and provides image upload, handled by UserController.editUser.
+router.post(
   "/edit/:id",
   verifyToken,
   imageUpload.single("image"),
