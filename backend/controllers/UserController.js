@@ -110,7 +110,7 @@ module.exports = class UserController {
 
   static async logout(req, res) {
     if (req.headers && req.headers.authorization) {
-      console.log(req.headers.authorization);
+      // console.log(req.headers.authorization);
       res.status(200).json({ message: "Logged out!" });
     }
   }
