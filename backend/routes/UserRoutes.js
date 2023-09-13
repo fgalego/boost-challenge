@@ -17,7 +17,7 @@ router.post("/login", UserController.login);
 // POST route for user logout, handled by UserController.logout.
 router.post("/logout", UserController.logout);
 // PUT route for checking if a user exists, handled by UserController.checkUser.
-router.put("/checkuser", UserController.checkUser);
+router.put("/profile", UserController.editUser);
 // GET route for checking if a user exists, handled by UserController.checkUser.
 router.get("/checkuser", UserController.checkUser);
 // GET route for getting a user by their ID, handled by UserController.getUserById.
@@ -29,12 +29,12 @@ router.patch(
   imageUpload.single("image"),
   UserController.editUser
 );
-// POST route for editing a user, which requires authentication and provides image upload, handled by UserController.editUser.
+// POST route for editing a user, which requires authentication and provides image upload, handled by UserController.uploadAvatar.
 router.post(
   "/edit/:id",
   verifyToken,
   imageUpload.single("image"),
-  UserController.editUser
+  UserController.uploadAvatar
 );
 
 module.exports = router;

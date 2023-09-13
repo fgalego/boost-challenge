@@ -34,6 +34,7 @@ Setup the .env file
 ```bash
   DB_USER= (database username)
   DB_PASSWORD= (database password)
+  DB_LINK= (database link)
   JWT_SECRET= (secret key)
 
 ```

@@ -176,17 +176,18 @@ module.exports = class UserController {
     }
 
     // Perform validations, returning error responses if those fail.
-    // if (!name) {
-    //   res.status(422).json({ message: "A valid name is required." });
-    // }
+    if (!name) {
+      res.status(422).json({ message: "A valid name is required." });
+      return;
+    }
 
     // Assign the value of the name variable to the name property of the user object. If validation passes, the name property will be updated with the new value provided in the request.
-    // user.name = name;
+    user.name = name;
 
-    // if (!email) {
-    //   res.status(422).json({ message: "A valid email is required." });
-    //   return;
-    // }
+    if (!email) {
+      res.status(422).json({ message: "A valid email is required." });
+      return;
+    }
 
     // Check if email already exists in db
     const userExists = await User.findOne({ email: email });
@@ -221,7 +222,38 @@ module.exports = class UserController {
 
       res.status(200).json({ message: "User updated!" });
     } catch (error) {
-      res.stats(500).json({ message: "error" });
+      res.status(500).json({ message: "error" });
+      return;
+    }
+  }
+
+  static async uploadAvatar(req, res) {
+    // Extract the user ID from the request parameters
+    const id = req.params.id;
+
+    // Check if user exists, retrieving the user from the database based on the token extracted from the request
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    // Extraction of name, email, password, and confirmPassword from the request body
+    const { name, email, password, confirmPassword } = req.body;
+
+    // Update the user's img if a file is attached to the request
+    if (req.file) {
+      user.image = req.file.filename;
+    }
+
+    try {
+      // User's data is updated in the database with success/failure response message.
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true }
+      );
+
+      res.status(200).json({ message: "User avatar updated!" });
+    } catch (error) {
+      res.status(500).json({ message: "error" });
       return;
     }
   }
