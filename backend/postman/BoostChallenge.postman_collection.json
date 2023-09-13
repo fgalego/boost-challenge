@@ -143,22 +143,28 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Filipe20232023",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "thetest125125@test.com",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{URL}}/api/checkuser",
+							"raw": "{{URL}}/api/profile",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"checkuser"
+								"profile"
 							]
 						}
 					},
